@@ -1,4 +1,4 @@
-import { VerticalScrollPane } from "./VerticalScrollPane";
+import { ScrollPane } from "./ScrollPane";
 
 const ITEM_HEIGHT = 30;
 
@@ -8,7 +8,7 @@ const viewportSize = 300;
 
 export default function App() {
 	return (
-		<VerticalScrollPane
+		<ScrollPane
 			contentSize={totalHeight}
 			viewportSize={viewportSize}
 			className="border border-gray-200"
@@ -36,6 +36,6 @@ export default function App() {
 					</div>
 				);
 			}}
-		</VerticalScrollPane>
+		</ScrollPane>
 	);
 }

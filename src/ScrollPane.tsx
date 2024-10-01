@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { ScrollBar } from "./ScrollBar";
 import { minmax } from "./utils";
 
-export type VerticalScrollPaneProps = {
+export type ScrollPaneProps = {
 	children: (scrollPosition: number) => React.ReactNode;
 	contentSize: number;
 	viewportSize: number;
@@ -12,14 +12,14 @@ export type VerticalScrollPaneProps = {
 	style?: React.CSSProperties;
 };
 
-export function VerticalScrollPane({
+export function ScrollPane({
 	children,
 	contentSize,
 	viewportSize,
 	scrollBarWidth = 12,
 	className,
 	style,
-}: VerticalScrollPaneProps) {
+}: ScrollPaneProps) {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	const handleWheel = (event: React.WheelEvent) => {
