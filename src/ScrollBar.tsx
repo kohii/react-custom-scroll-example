@@ -12,7 +12,7 @@ export type ScrollBarProps = {
 	className?: string;
 };
 
-const MIN_THUMB_SIZE = 16;
+const MIN_THUMB_SIZE = 20;
 
 export function ScrollBar({
 	contentSize,
@@ -88,11 +88,17 @@ export function ScrollBar({
 		>
 			{contentSize > viewportSize && (
 				<div
-					className="absolute inset-0 bg-gray-500 opacity-40 hover:opacity-60 active:opacity-70"
+					className={twMerge(
+						"absolute inset-0 bg-[#7F7F7F]",
+						horizontal
+							? "inset-y-[2px] hover:inset-y-[1px] active:inset-y-[1px]"
+							: "inset-x-[2px] hover:inset-x-[1px] active:inset-x-[1px]",
+					)}
 					onMouseDown={handleMouseDownOnThumb}
 					style={{
 						[horizontal ? "width" : "height"]: thumbSize,
 						[horizontal ? "left" : "top"]: thumbPosition,
+						borderRadius: scrollBarWidth - 2,
 					}}
 				/>
 			)}
