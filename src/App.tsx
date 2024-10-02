@@ -25,11 +25,11 @@ export default function App() {
 
 				return (
 					<div
-						className="absolute"
+						className="absolute w-full"
 						style={{ top: startPosition - scrollPosition }}
 					>
 						{visibleItems.map((item) => (
-							<div key={item} style={{ height: ITEM_HEIGHT }}>
+							<div key={item} className="p-1" style={{ height: ITEM_HEIGHT }}>
 								{item}
 							</div>
 						))}
