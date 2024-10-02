@@ -45,13 +45,13 @@ export function ScrollPane({
 	return (
 		<div
 			className={twMerge("flex", className)}
-			style={{
-				height: viewportSize,
-				...style,
-			}}
+			style={style}
 			onWheel={handleWheel}
 		>
-			<div className="relative overflow-hidden flex-1 h-full">
+			<div
+				className="relative overflow-hidden flex-1 h-full"
+				style={{ height: viewportSize }}
+			>
 				{children(scrollPosition)}
 			</div>
 			<ScrollBar
@@ -60,7 +60,6 @@ export function ScrollPane({
 				scrollPosition={scrollPosition}
 				onScroll={setScrollPosition}
 				scrollBarWidth={scrollBarWidth}
-				className="border-l border-gray-200"
 			/>
 		</div>
 	);
