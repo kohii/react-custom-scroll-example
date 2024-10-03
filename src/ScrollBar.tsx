@@ -87,7 +87,6 @@ export function ScrollBar({
 				[horizontal ? "height" : "width"]: scrollBarWidth,
 			}}
 			onMouseDown={handleMouseDownOnTrack}
-			// biome-ignore lint/a11y/useAriaPropsForRole:
 			// biome-ignore lint/a11y/useSemanticElements:
 			role="scrollbar"
 			tabIndex={-1}
