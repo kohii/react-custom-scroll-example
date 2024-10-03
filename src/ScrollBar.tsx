@@ -10,6 +10,7 @@ export type ScrollBarProps = {
 	horizontal?: boolean;
 	scrollBarWidth?: number;
 	className?: string;
+	ariaControls?: string;
 };
 
 const MIN_THUMB_SIZE = 20;
@@ -22,6 +23,7 @@ export function ScrollBar({
 	horizontal = false,
 	scrollBarWidth = 12,
 	className,
+	ariaControls,
 }: ScrollBarProps) {
 	const scrollRatio = viewportSize / contentSize;
 	const thumbSize = Math.max(MIN_THUMB_SIZE, scrollRatio * viewportSize);
@@ -85,6 +87,15 @@ export function ScrollBar({
 				[horizontal ? "height" : "width"]: scrollBarWidth,
 			}}
 			onMouseDown={handleMouseDownOnTrack}
+			// biome-ignore lint/a11y/useAriaPropsForRole:
+			// biome-ignore lint/a11y/useSemanticElements:
+			role="scrollbar"
+			tabIndex={-1}
+			aria-controls={ariaControls}
+			aria-valuenow={scrollPosition}
+			aria-valuemin={0}
+			aria-valuemax={maxScrollPosition}
+			aria-orientation={horizontal ? "horizontal" : "vertical"}
 		>
 			{contentSize > viewportSize && (
 				<div
@@ -100,6 +111,12 @@ export function ScrollBar({
 						[horizontal ? "left" : "top"]: thumbPosition,
 						borderRadius: scrollBarWidth - 2,
 					}}
+					tabIndex={0}
+					role="slider"
+					aria-orientation={horizontal ? "horizontal" : "vertical"}
+					aria-valuenow={scrollPosition}
+					aria-valuemin={0}
+					aria-valuemax={maxScrollPosition}
 				/>
 			)}
 		</div>

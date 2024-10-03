@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { ScrollBar } from "./ScrollBar";
 import { minmax } from "./utils";
@@ -42,6 +42,8 @@ export function ScrollPane({
 		);
 	};
 
+	const id = useId();
+
 	return (
 		<div
 			className={twMerge("flex", className)}
@@ -51,6 +53,7 @@ export function ScrollPane({
 			<div
 				className="relative overflow-hidden flex-1 h-full"
 				style={{ height: viewportSize }}
+				id={id}
 			>
 				{children(scrollPosition)}
 			</div>
@@ -60,6 +63,7 @@ export function ScrollPane({
 				scrollPosition={scrollPosition}
 				onScroll={setScrollPosition}
 				scrollBarWidth={scrollBarWidth}
+				ariaControls={id}
 			/>
 		</div>
 	);
